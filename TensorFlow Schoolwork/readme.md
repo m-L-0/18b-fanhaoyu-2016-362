@@ -24,19 +24,19 @@ distance = tf.reduce_sum(tf.abs(tf.add(X_train, tf.negative(X_test))), reduction
 correct = 0
 init = tf.global_variables_initializer()
 with tf.Session() as sess:
-​    sess.run(init)
-​    # 开始测试
-​    for i in range(len(Xtest)):
-​        # 获取当前样本与各样本之间的距离
-​        dis = sess.run(distance,feed_dict={X_train: Xtrain, X_test: Xtest[i, :]})
-​        # 获取最近的k个样本
-​        indexs = np.argsort(dis)[:k]
-​        candidate_Y = Ytrain[indexs]
-​        #投票表决
-​        pred = np.argmax(np.bincount(candidate_Y))
-​        print("Test", i, "Prediction:", pred,"True Class:", Ytest[i])
-​        # 如果分类正确，correct += 1
-​        if Ytest[i] == pred:
-​            correct += 1
-​    acc = correct/len(Ytest)
-​    print("Acc:","{}%".format(acc * 100))
+  sess.run(init)
+  # 开始测试
+    for i in range(len(Xtest)):
+        # 获取当前样本与各样本之间的距离
+        dis = sess.run(distance,feed_dict={X_train: Xtrain, X_test: Xtest[i, :]})
+        # 获取最近的k个样本
+        indexs = np.argsort(dis)[:k]
+        candidate_Y = Ytrain[indexs]
+        #投票表决
+        pred = np.argmax(np.bincount(candidate_Y))
+        print("Test", i, "Prediction:", pred,"True Class:", Ytest[i])
+        # 如果分类正确，correct += 1
+        if Ytest[i] == pred:
+           correct += 1
+        acc = correct/len(Ytest)
+        print("Acc:","{}%".format(acc * 100))
