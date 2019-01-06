@@ -1,3 +1,16 @@
+作者：范浩宇
+
+算法：谱聚类
+
+代码：python
+
+数据处理：归一化
+
+数据集：鸢尾花数据集
+
+
+
+
 ```python
 import os
 import scipy.io as scio
